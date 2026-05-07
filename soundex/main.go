@@ -37,5 +37,5 @@ func Soundex(str string) string {
 }
 
 func main() {
-	fmt.Println(Soundex("He"))
+	fmt.Println(Soundex("Hello"))
 }
