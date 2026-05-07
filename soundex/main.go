@@ -28,9 +28,14 @@ func Soundex(str string) string {
 			return result
 		}
 	}
+
+	for i := 0; len(result) < 4; i++ {
+		result += "0"
+	}
+
 	return result
 }
 
 func main() {
-	fmt.Println(Soundex("Hello"))
+	fmt.Println(Soundex("He"))
 }
