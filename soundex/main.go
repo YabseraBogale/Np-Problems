@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+)
 
 func Soundex(str string) string {
 
@@ -37,5 +42,26 @@ func Soundex(str string) string {
 }
 
 func main() {
-	fmt.Println(Soundex("Hello"))
+	file, err := os.Open("last-names.txt")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	result := make(map[string][]string)
+
+	for scanner.Scan() {
+		if _, ok := result[Soundex(scanner.Text())]; ok {
+			result[Soundex(scanner.Text())] = append(result[Soundex(scanner.Text())], scanner.Text())
+		} else {
+			result[Soundex(scanner.Text())] = []string{scanner.Text()}
+		}
+
+	}
+
+	for i, _ := range result {
+		fmt.Println(result[i])
+	}
 }
