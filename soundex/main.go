@@ -5,36 +5,39 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func Soundex(str string) string {
 
 	var result string
 	result += string(str[0])
-	for i, _ := range str {
+	for _, i := range strings.ToLower(str) {
 		if i == 0 {
 			continue
-		} else if string(str[i]) == "b" || string(str[i]) == "f" || string(str[i]) == "p" || string(str[i]) == "v" {
+		} else if string(i) == "b" || string(i) == "f" || string(i) == "p" || string(i) == "v" {
 			result += "1"
-		} else if string(str[i]) == "c" || string(str[i]) == "g" || string(str[i]) == "j" || string(str[i]) == "k" || string(str[i]) == "q" || string(str[i]) == "s" || string(str[i]) == "x" || string(str[i]) == "z" {
+		} else if string(i) == "c" || string(i) == "g" || string(i) == "j" || string(i) == "k" || string(i) == "q" || string(i) == "s" || string(i) == "x" || string(i) == "z" {
 			result += "2"
-		} else if string(str[i]) == "d" || string(str[i]) == "t" {
+		} else if string(i) == "d" || string(i) == "t" {
 			result += "3"
-		} else if string(str[i]) == "l" {
+		} else if string(i) == "l" {
 			result += "4"
-		} else if string(str[i]) == "m" || string(str[i]) == "n" {
+		} else if string(i) == "m" || string(i) == "n" {
 			result += "5"
-		} else if string(str[i]) == "r" {
+
+		} else if string(i) == "r" {
 			result += "6"
-		} else if string(str[i]) == "a" || string(str[i]) == "e" || string(str[i]) == "i" || string(str[i]) == "o" || string(str[i]) == "u" || string(str[i]) == "h" || string(str[i]) == "w" || string(str[i]) == "y" {
+		} else if string(i) == "a" || string(i) == "e" || string(i) == "i" || string(i) == "o" || string(i) == "u" || string(i) == "h" || string(i) == "w" || string(i) == "y" {
 			result += "0"
 		}
-		if len(result) == 4 {
+		if len(result) == 6 {
 			return result
 		}
+
 	}
 
-	for i := 0; len(result) < 4; i++ {
+	for i := 0; len(result) < 6; i++ {
 		result += "0"
 	}
 
@@ -60,8 +63,7 @@ func main() {
 		}
 
 	}
-
-	for i, _ := range result {
-		fmt.Println(result[i])
+	for i, j := range result {
+		fmt.Println(i, j)
 	}
 }
