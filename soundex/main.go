@@ -31,13 +31,13 @@ func Soundex(str string) string {
 		} else if string(i) == "a" || string(i) == "e" || string(i) == "i" || string(i) == "o" || string(i) == "u" || string(i) == "h" || string(i) == "w" || string(i) == "y" {
 			result += "0"
 		}
-		if len(result) == 6 {
+		if len(result) == 4 {
 			return result
 		}
 
 	}
 
-	for i := 0; len(result) < 6; i++ {
+	for i := 0; len(result) < 4; i++ {
 		result += "0"
 	}
 
