@@ -5,6 +5,10 @@ import (
 	"math"
 )
 
+func AitkenDeltaSquared(){
+
+}
+
 func NewtonRaphson(f func(float64) float64, fd func(float64) float64, initialGuess float64, tolerance float64, maxIterations int) (float64, error) {
 	x := initialGuess
 	for i := 0; i < maxIterations; i++ {
