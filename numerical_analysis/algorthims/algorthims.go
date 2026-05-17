@@ -10,6 +10,11 @@ func HammingDistance(string_1, string_2 string) (int, error) {
 	if len(string_1) != len(string_2) {
 		return 0, fmt.Errorf("Strings must be of equal length.")
 	}
+	for i, _ := range string_1 {
+		if string_1[i] == string_2[i] {
+			count++
+		}
+	}
 	return count, nil
 }
 
