@@ -1,1 +1,4 @@
 Algorithms
+
+Newton Raphson
+
